@@ -104,7 +104,7 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
 
-        <!-- Button chuyển đến trang đăng ký -->
+    
         <div class="mt-3">
             <p>Don't have an account?</p>
             <a href="add_user.php" class="btn btn-secondary">Register Now</a>
