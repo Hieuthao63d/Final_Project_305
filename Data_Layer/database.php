@@ -71,8 +71,8 @@ function loginUser($user_email, $user_password)
 
 
 
-function closeConnection()
-{
-    global $conn;
-    mysqli_close($conn);
-}
+// function closeConnection()
+// {
+//     global $conn;
+//     mysqli_close($conn);
+// }
