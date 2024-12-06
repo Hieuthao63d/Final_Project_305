@@ -51,10 +51,23 @@ function updateAppointmentStatus($status, $appointment_id)
         return "Lỗi khi cập nhật thông tin: " . mysqli_stmt_error($stmt);
     }
 
-    // Đóng statement sau khi thực thi
-    mysqli_stmt_close($stmt);
 }
 
+function getHealthStatus($user_id)
+{
+    global $conn;
+    $sql = "SELECT * FROM health_status WHERE user_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if (mysqli_num_rows($result) > 0) {
+        return mysqli_fetch_assoc($result);
+    } else {
+        return null;
+    }
+}
 
 // Đóng kết nối cơ sở dữ liệu khi không còn sử dụng
 // function closeConnection() {

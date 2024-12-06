@@ -13,6 +13,7 @@ include '../Data_Layer/information_form.php';
 
 // Lấy user_id từ session
 $user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'];
 
 // Truy vấn thông tin người dùng từ cơ sở dữ liệu
 $sql = "SELECT * FROM users WHERE user_id = ?";
@@ -197,19 +198,11 @@ mysqli_stmt_close($stmt);
                 <button class="btn-logout" onclick="window.location.href='login.php'">Logout</button>
             </div>
 
-            <?php if ($user_info['user_email'] === "1") { ?>
-                <!-- Nút đặt lịch hẹn -->
-                <div class="form-group">
-                    <a href="../Presentation_Layer/appointment_form.php" class="btn-appointment">Book Appointment</a>
-                </div>
-            <?php } else {
+            <!-- Nút xem lịch hẹn -->
+            <div class="form-group">
+                <a href="../Presentation_Layer/doctor_appointment.php" class="btn-appointment">Show All Appointments</a>
+            </div>
 
-                ?>
-                <!-- Nút xem lịch hẹn -->
-                <div class="form-group">
-                    <a href="../Presentation_Layer/doctor_appointment.php" class="btn-appointment">Show All Appointments</a>
-                </div>
-            <?php } ?>
         </div>
     </div>
 

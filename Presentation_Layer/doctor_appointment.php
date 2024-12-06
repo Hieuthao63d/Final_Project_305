@@ -15,6 +15,7 @@ include '../Data_Layer/doctor_data.php';
 $user_id = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 
+
 // Truy vấn thông tin người dùng từ cơ sở dữ liệu
 $sql = "SELECT * FROM `appointment` WHERE doctor_id = ?";
 $stmt = mysqli_prepare($conn, $sql);
@@ -47,39 +48,49 @@ mysqli_stmt_close($stmt);
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
     <title>Doctor page</title>
+
     <style>
         body {
             background-color: #f4f7fc;
             font-family: 'Arial', sans-serif;
         }
 
+        .container {
+
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-column {
+            flex: 1;
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
         h1 {
-            text-align: center;
-            margin-bottom: 30px;
             color: #333;
         }
 
-        .navbar {
-            background-color: #00c1f1;
-            padding: 1rem;
-        }
-
-        .navbar a {
+        .btn-goback {
+            background-color: #dc3545;
             color: white;
-            font-weight: bold;
-            margin-right: 15px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-goback:hover {
+            background-color: #c82333;
+        }
+
+        a:hover {
             text-decoration: none;
-        }
-
-        .navbar .flag {
-            float: right;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar .flag img {
-            width: 30px;
-            border-radius: 50%;
         }
     </style>
 </head>
@@ -88,6 +99,19 @@ mysqli_stmt_close($stmt);
     <main>
         <div class="container">
             <div class="row">
+                <div class="right-column">
+                    <h5>Account</h5>
+                    <div class="form-group">
+                        <p><strong>Username:</strong> <?php echo htmlspecialchars($user_name); ?></p>
+                    </div>
+
+                    <!-- Nút quay trở lại profile page -->
+                    <div class="form-group">
+                        <a class="btn-goback" href="../Presentation_Layer/doctor.php" class="btn-appointment">Go back to
+                            profile page</a>
+                    </div>
+
+                </div>
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
@@ -142,6 +166,7 @@ mysqli_stmt_close($stmt);
                     </tbody>
                 </table>
             </div>
+
         </div>
     </main>
 

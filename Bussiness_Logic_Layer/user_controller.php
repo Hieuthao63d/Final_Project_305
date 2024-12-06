@@ -18,11 +18,8 @@ function handleUserRequest()
             echo "Dữ liệu không hợp lệ.";
         }
     }
-
-
-    closeConnection();
+    //closeConnection();
 }
-
 
 handleUserRequest();
 ?>
