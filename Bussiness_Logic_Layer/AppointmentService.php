@@ -9,7 +9,8 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
-    $client_id = $_POST['client_id']; 
+    $client_id = $_POST['client_id'];
+    $client_name = $_POST['client_name'];
     $doctor_id = $_POST['doctor_id'];
     $reason = $_POST['reason'];
     $comments = $_POST['comments'];
@@ -23,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insert the appointment into the database
     try {
         // Prepare the SQL for inserting the appointment
-        $sql = "INSERT INTO appointment (client_id, doctor_id, appointment_time, status) 
-                VALUES (?, ?, ?, 'Pending')"; // 'Pending' as default status
+        $sql = "INSERT INTO appointment (client_id, client_name, doctor_id, appointment_time, status) 
+                VALUES (?, ?, ?, ? , 'Pending')"; // 'Pending' as default status
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("iis", $client_id, $doctor_id, $appointment_time);
+        $stmt->bind_param("isis", $client_id, $client_name, $doctor_id, $appointment_time);
         $stmt->execute();
 
         // Get the appointment ID

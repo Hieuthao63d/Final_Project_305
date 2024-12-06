@@ -1,6 +1,6 @@
 <?php
 // profile_controller.php
-include '../Data_Layer/user_data.php';
+include '../Data_Layer/doctor_data.php';
 
 // Kiểm tra xem người dùng đã đăng nhập hay chưa
 session_start();
@@ -9,7 +9,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-$user_id = $_SESSION['user_id'];
-$user_info = getUserInfo($user_id);
-include '../Presentation_Layer/doctor_page.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $appointment_id = $_POST['appointment_id'];
+    $status = $_POST['status'];
+
+    updateAppointmentStatus($status, $appointment_id);
+
+}
+
 ?>

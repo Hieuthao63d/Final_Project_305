@@ -128,9 +128,9 @@ mysqli_stmt_close($stmt);
 <body>
     <div class="container mt-5">
         <div class="left-column">
-            <h1>User Profile</h1>
+            <h1>Doctor Profile</h1>
             <div class="form-group">
-                <label>Patient ID:</label>
+                <label>Doctor ID:</label>
                 <p><?php echo htmlspecialchars($user_info['user_id']); ?></p>
             </div>
             <div class="form-group">
@@ -160,11 +160,6 @@ mysqli_stmt_close($stmt);
             <div class="form-group">
                 <label>Identification:</label>
                 <p><?php echo htmlspecialchars($user_info['identication_number']); ?></p>
-            </div>
-
-            <div class="form-group">
-                <label>Role:</label>
-                <p><?php echo htmlspecialchars($user_info['role_id']); ?></p>
             </div>
 
             <!-- Medical Schedule Section -->
@@ -202,11 +197,19 @@ mysqli_stmt_close($stmt);
                 <button class="btn-logout" onclick="window.location.href='login.php'">Logout</button>
             </div>
 
-            <!-- Nút đặt lịch hẹn -->
-            <div class="form-group">
-                <a href="../Presentation_Layer/appointment_form.php" class="btn-appointment">Book Appointment</a>
-            </div>
+            <?php if ($user_info['user_email'] === "1") { ?>
+                <!-- Nút đặt lịch hẹn -->
+                <div class="form-group">
+                    <a href="../Presentation_Layer/appointment_form.php" class="btn-appointment">Book Appointment</a>
+                </div>
+            <?php } else {
 
+                ?>
+                <!-- Nút xem lịch hẹn -->
+                <div class="form-group">
+                    <a href="../Presentation_Layer/doctor_appointment.php" class="btn-appointment">Show All Appointments</a>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
