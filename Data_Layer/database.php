@@ -42,16 +42,17 @@ function loginUser($user_email, $user_password)
     if ($result && mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
 
-        // Xác minh mật khẩu
+       
         if (password_verify($user_password, $user['user_password'])) {
             session_start();
             $_SESSION['user_name'] = $user['user_name'];
             $_SESSION['role_id'] = $user['role_id'];
+            $_SESSION['user_id'] = $user['user_id'];
 
-            // Kiểm tra role_id và chuyển hướng
+            
             if (is_null($user['role_id'])) {
                 echo "<script>alert('Đăng nhập thành công!');</script>";
-                echo "<script>window.location.href = '../Presentation_Layer/infor.php';</script>";
+                echo "<script>window.location.href = '../Presentation_Layer/profile_page.php';</script>";
             } elseif ($user['role_id'] == 2) {
                 echo "<script>alert('Đăng nhập thành công!');</script>";
                 echo "<script>window.location.href = '../Presentation_Layer/doctor.php';</script>";
