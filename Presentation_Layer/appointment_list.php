@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,31 +11,50 @@
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
         }
+
+        .btn-appointment {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px; /* Cách nút logout */
+        }
+
         .navbar {
             background-color: #00c1f1;
             padding: 1rem;
         }
+
         .navbar a {
             color: white;
             font-weight: bold;
             margin-right: 15px;
             text-decoration: none;
         }
+
         .navbar .flag {
             float: right;
             display: flex;
             align-items: center;
         }
+
         .navbar .flag img {
             width: 30px;
             border-radius: 50%;
         }
+
         .container {
             margin-top: 2rem;
         }
+
         .table {
             margin-top: 1.5rem;
         }
+
         .btn-submit {
             margin-top: 2rem;
             background-color: #28a745;
@@ -46,6 +65,7 @@
         }
     </style>
 </head>
+
 <body>
     <header class="navbar">
         <a href="#">MedTrack</a>
@@ -68,19 +88,26 @@
                 </tr>
             </thead>
             <tbody id="appointment-list">
+                <!-- Data will be dynamically inserted here -->
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                        fetch('fetch_appointments.php')
+                        fetch('../Bussiness_Logic_Layer/fetch_appointments.php')
                             .then(response => response.text())
                             .then(data => {
                                 document.getElementById('appointment-list').innerHTML = data;
                             });
                     });
                 </script>
-                
+
             </tbody>
         </table>
-        <button class="btn-submit btn-block">Submit and continue</button>
+        <div class="form-group">
+            
+        </div>
+        <div class="form-group">
+            <a href="../Presentation_Layer/profile_page.php" class="btn-appointment">Back to Profile</a>
+        </div>
     </div>
 </body>
+
 </html>

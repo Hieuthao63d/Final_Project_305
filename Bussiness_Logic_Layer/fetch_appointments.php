@@ -11,7 +11,7 @@ $sql = "SELECT a.appointment_id,
                a.status 
         FROM appointment a
         JOIN users u1 ON a.client_id = u1.user_id
-        JOIN users u2 ON a.doctor_id = u2.user_id";s
+        JOIN users u2 ON a.doctor_id = u2.user_id";
         
 $result = $conn->query($sql);
 
