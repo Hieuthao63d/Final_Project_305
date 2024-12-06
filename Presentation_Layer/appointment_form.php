@@ -13,8 +13,9 @@ if (!isset($_SESSION['user_id'])) {
 // Kết nối cơ sở dữ liệu
 include '../Data_Layer/information_form.php';
 
+
 // Lấy user_id từ session
-$user_id = $_SESSION['user_id'];
+$patient_id = $_SESSION['user_id'];
 
 
 
@@ -73,7 +74,7 @@ $stmt->close();
       <p>Request a new appointment in 10 seconds</p>
       <form class="appointment-form" method="POST" action="../Bussiness_Logic_Layer/AppointmentService.php">
         <div class="form-group">
-        <input type="hidden" name="client_id" value=$user_id> 
+        <input type="hidden" name="client_id" value="<?= $patient_id ?>"> 
           <label for="doctor_id">Doctor</label>
           <select name="doctor_id" id="doctor_id" required>
             <option value="">Select Doctor</option>

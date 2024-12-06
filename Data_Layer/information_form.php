@@ -69,8 +69,8 @@ function updateUser($user_id, $user_name, $user_email, $phone_number, $dOB, $ins
 }
 
 // Đóng kết nối cơ sở dữ liệu khi không còn sử dụng
-function closeConnection() {
-    global $conn;
-    mysqli_close($conn);
-}
+// function closeConnection() {
+//     global $conn;
+//     mysqli_close($conn);
+// }
 ?>
