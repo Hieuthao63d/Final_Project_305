@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirect to a confirmation page or show a success message
         echo "Appointment successfully booked!";
         // You can redirect like this:
-        // header("Location: ..//Presentation_Layer/profile_page.php");
+        header("Location: ../Presentation_Layer/appointment_list.php");
 
     } catch (mysqli_sql_exception $e) {
         echo "Error processing the appointment: " . $e->getMessage();

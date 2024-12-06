@@ -80,7 +80,7 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Order</th>
                     <th>Client Name</th>
                     <th>Doctor Name</th>
                     <th>Appointment Time</th>
