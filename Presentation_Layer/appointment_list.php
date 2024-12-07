@@ -12,16 +12,31 @@
             background-color: #f8f9fa;
         }
 
+        .container {
+           padding-left: 20%;
+           padding-right: 20%;
+        }
+
+        h1 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #00c1f1;
+            margin-left: 200px;
+        }
+
         .btn-appointment {
             background-color: #007bff;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding: 10px 375px;
             border-radius: 5px;
             cursor: pointer;
             text-align: center;
-            width: 100%;
-            margin-top: 20px; /* Cách nút logout */
+            text-decoration: none;
+            margin-top: 50px;
+            /* Cách nút logout */
         }
 
         .navbar {
@@ -53,6 +68,7 @@
 
         .table {
             margin-top: 1.5rem;
+            margin-bottom: 30px;
         }
 
         .btn-submit {
@@ -60,17 +76,35 @@
             background-color: #28a745;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            width: 70%;
             cursor: pointer;
+        }
+
+        thead tr th {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        td {
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid lightgray;
+            border-collapse: collapse;
         }
     </style>
 </head>
 
 <body>
     <header class="navbar">
-        <a href="#">MedTrack</a>
         <a href="#">Home</a>
-        <a href="#">Profile</a>
+        <a href="../Presentation_Layer/profile_page.php">Profile</a>
         <div class="flag">
             <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="Flag">
         </div>
@@ -101,12 +135,8 @@
 
             </tbody>
         </table>
-        <div class="form-group">
-            
-        </div>
-        <div class="form-group">
-            <a href="../Presentation_Layer/profile_page.php" class="btn-appointment">Back to Profile</a>
-        </div>
+
+        <a href="../Presentation_Layer/profile_page.php" class="btn-appointment">Back to Profile</a>
     </div>
 </body>
 
