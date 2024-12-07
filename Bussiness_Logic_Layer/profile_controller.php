@@ -11,5 +11,5 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 $user_info = getUserInfo($user_id);
-include '../Presentation_Layer/profile_page.php';
+include '../Presentation_Layer/doctor_page.php';
 ?>

@@ -15,7 +15,7 @@ include '../Data_Layer/information_form.php';
 
 // Lấy user_id từ session
 $patient_id = $_SESSION['user_id'];
-
+$patient_name = $_SESSION['user_name'];
 
 
 // Include the database connection
@@ -104,29 +104,32 @@ $stmt->close();
       margin-bottom: 10px;
       color: gray;
     }
+
     select {
       width: 70%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin-bottom: 30px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
     }
-    input{
+
+    input {
       width: 70%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin-bottom: 30px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
     }
-    button{
+
+    button {
       padding-top: 10px;
       padding-bottom: 10px;
       border-radius: 5px;
-      background-color: #47D5FF ;
+      background-color: #47D5FF;
       color: white;
       width: 70%;
     }
@@ -148,6 +151,7 @@ $stmt->close();
       <form class="appointment-form" method="POST" action="../Bussiness_Logic_Layer/AppointmentService.php">
         <div class="form-group">
           <input type="hidden" name="client_id" value="<?= $patient_id ?>">
+          <input type="hidden" name="client_name" value="<?= $patient_name ?>">
           <label for="doctor_id">Doctor</label>
           <select name="doctor_id" id="doctor_id" required>
             <option value="">Select Doctor</option>
@@ -163,7 +167,8 @@ $stmt->close();
           </div>
           <div class="form-group col-md-6">
             <label for="comments">Additional comments/notes</label>
-            <input type="text" class="form-control" id="comments" name="comments" placeholder="Ex: Prefer afternoon appointments, if possible">
+            <input type="text" class="form-control" id="comments" name="comments"
+              placeholder="Ex: Prefer afternoon appointments, if possible">
           </div>
           <label for="appointment_time">Appointment Date and Time</label>
           <input type="datetime-local" id="appointment_time" name="appointment_time" required>

@@ -10,7 +10,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-function updateUser($user_id, $user_name, $user_email, $phone_number, $dOB, $insurance_number, $gender, $user_address, $occupation, $relative_name, $relative_phone, $insurance_provider, $identication_type, $identication_number) 
+function updateUser($user_id, $user_name, $user_email, $phone_number, $dOB, $insurance_number, $gender, $user_address, $occupation, $relative_name, $relative_phone, $insurance_provider, $identication_type, $identication_number)
 {
     global $conn;
 
@@ -47,9 +47,20 @@ function updateUser($user_id, $user_name, $user_email, $phone_number, $dOB, $ins
 
     // Đặt giá trị tham số cho câu lệnh SQL
     $params = [
-        $user_name, $user_email, $phone_number, $dOB, $insurance_number,
-        $gender, $user_address, $occupation, $relative_name, $relative_phone, 
-        $insurance_provider, $identication_type, $identication_number, $user_id
+        $user_name,
+        $user_email,
+        $phone_number,
+        $dOB,
+        $insurance_number,
+        $gender,
+        $user_address,
+        $occupation,
+        $relative_name,
+        $relative_phone,
+        $insurance_provider,
+        $identication_type,
+        $identication_number,
+        $user_id
     ];
 
     // Bind tham số vào câu lệnh SQL
