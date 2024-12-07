@@ -1,37 +1,8 @@
 <?php
-// Bắt đầu session để xác thực người dùng
-session_start();
+include '../Bussiness_Logic_Layer/doctor_controller.php';
 
-// Kiểm tra nếu người dùng đã đăng nhập
-if (!isset($_SESSION['user_id'])) {
-    echo "Vui lòng đăng nhập để xem trang hồ sơ.";
-    exit;
-}
+$user_info = getDoctorInforController();
 
-// Kết nối cơ sở dữ liệu
-include '../Data_Layer/information_form.php';
-
-// Lấy user_id từ session
-$user_id = $_SESSION['user_id'];
-$user_name = $_SESSION['user_name'];
-
-// Truy vấn thông tin người dùng từ cơ sở dữ liệu
-$sql = "SELECT * FROM users WHERE user_id = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, 'i', $user_id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
-// Kiểm tra nếu có dữ liệu người dùng
-if ($user_info = mysqli_fetch_assoc($result)) {
-    // Dữ liệu người dùng đã được lấy thành công
-} else {
-    echo "Không tìm thấy thông tin người dùng.";
-    exit;
-}
-
-// Đóng kết nối
-mysqli_stmt_close($stmt);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -180,9 +151,6 @@ mysqli_stmt_close($stmt);
                 </div>
             </div>
 
-            <div class="form-group">
-                <a href="information_screen.php" class="btn btn-primary">Edit Profile</a>
-            </div>
         </div>
 
         <!-- Right Column (Account and Logout) -->

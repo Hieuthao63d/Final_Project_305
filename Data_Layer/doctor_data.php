@@ -56,7 +56,7 @@ function updateAppointmentStatus($status, $appointment_id)
 function getHealthStatus($user_id)
 {
     global $conn;
-    $sql = "SELECT * FROM health_status WHERE user_id = ?";
+    $sql = "SELECT * FROM health_status WHERE user_id = ? limit 1";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
@@ -69,9 +69,27 @@ function getHealthStatus($user_id)
     }
 }
 
-// Đóng kết nối cơ sở dữ liệu khi không còn sử dụng
-// function closeConnection() {
-//     global $conn;
-//     mysqli_close($conn);
-// }
+function getDoctorAppointment($user_id)
+{
+    global $conn;
+    // Truy vấn thông tin người dùng từ cơ sở dữ liệu
+    $sql = "SELECT * FROM `appointment` WHERE doctor_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 'i', $user_id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    // Kiểm tra nếu có dữ liệu người dùng
+    if ($result) {
+        // Dữ liệu người dùng đã được lấy thành công
+        return $result;
+    } else {
+        echo "Không tìm thấy thông tin người dùng.";
+        exit;
+    }
+
+    // Đóng kết nối
+    mysqli_stmt_close($stmt);
+}
+
 ?>
