@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 06, 2024 lúc 05:17 AM
+-- Thời gian đã tạo: Th12 07, 2024 lúc 07:55 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -40,6 +40,15 @@ CREATE TABLE `appointment` (
   `comments` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `appointment`
+--
+
+INSERT INTO `appointment` (`appointment_id`, `client_id`, `client_name`, `doctor_id`, `doctor_name`, `appointment_time`, `location`, `status`, `reason`, `comments`) VALUES
+(3, 4, '', 2, '', '2024-12-05 22:10:00', '', 'Pending', 'thao', 'áda'),
+(4, 4, '', 2, '', '2024-12-06 22:48:00', '', 'Pending', 'ávdsv', 'dvdv'),
+(5, 4, '', 2, '', '2024-12-07 09:17:00', '', 'Pending', 'ahjsguasvub', 'âscjbhcjbdsc');
+
 -- --------------------------------------------------------
 
 --
@@ -53,8 +62,8 @@ CREATE TABLE `health_status` (
   `temperature` varchar(10) DEFAULT NULL,
   `blood_pressure` varchar(10) DEFAULT NULL,
   `heart_rate` varchar(10) DEFAULT NULL,
-  `doctor's_diagnosis` varchar(100) DEFAULT NULL,
-  `doctor's_advice` varchar(200) DEFAULT NULL
+  `doctor_diagnosis` varchar(100) DEFAULT NULL,
+  `doctor_advice` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,9 +113,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `phone_number`, `dOB`, `age`, `gender`, `user_address`, `occupation`, `insurance_provider`, `insurance_number`, `identication_type`, `identication_number`, `user_avatar`, `role_id`, `relative_name`, `relative_phone`) VALUES
 (1, 'ThanhHuyen', 'huyen@gmail.com', '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
-(2, 'ThanhHuyen', 'huyen@gmail.com', '$2y$10$C6FBi6Zd6aPZGAcpNmQZ/eAg6WUCYqX55tN0YHSmiaxwmAy0S/Ofa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', ''),
+(2, 'ThanhHuyen', 'huyen@gmail.com', '$2y$10$C6FBi6Zd6aPZGAcpNmQZ/eAg6WUCYqX55tN0YHSmiaxwmAy0S/Ofa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, '', ''),
 (3, 'Nguyễn Văn A', 'nguyen.a@example.com', '$2y$10$auk66nlQeyS2kvYRgrYsrO8hWDDAe4NLUp5dn/XK/mcsMAF60iQX6', '0901234567', '1990-01-01', NULL, 'male', 'Hà Nội', 'Engineer', 'Bảo Việt', 'INS123456', 'CMND', '123456789', NULL, NULL, 'Nguyễn Văn B', '0907654321'),
-(4, 'Phan Dinh Hieu Thao', 'hieuthao63d@gmail.com', '$2y$10$4Jpjux6DR4kcXWYuI6W2p.ijs0aRdvav4Ze4Ad/6dzk1Bclutp.HS', '0348727403', '2024-12-28', '12', 'other', '246c/2 khu phố 1B phường An Phú thị xã Thuận An tỉnh Bình Dương', 'student', 'fdfdf', '1231231231231', '12312313', '213123', NULL, NULL, 'ábdjad', '0348727403');
+(4, 'Phan Dinh Hieu Thao', 'hieuthao63d@gmail.com', '$2y$10$4Jpjux6DR4kcXWYuI6W2p.ijs0aRdvav4Ze4Ad/6dzk1Bclutp.HS', '0348727403', '2024-12-28', '12', 'other', '246c/2 khu phố 1B phường An Phú thị xã Thuận An tỉnh Bình Dương', 'student', 'fdfdf', '1231231231231', '12312313', '213123', NULL, NULL, '', '0348727403');
 
 -- --------------------------------------------------------
 
@@ -175,7 +184,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT cho bảng `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `appointment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `health_status`
